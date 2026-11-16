@@ -1,0 +1,3 @@
+VCD info: dumpfile results/waveforms/tb_program_counter.vcd opened for output.
+TB_PROGRAM_COUNTER: PASS (8 checks)
+tb/tb_program_counter.v:70: $finish called at 110000 (1ps)

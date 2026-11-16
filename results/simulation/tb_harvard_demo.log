@@ -1,0 +1,4 @@
+VCD info: dumpfile results/waveforms/tb_harvard_demo.vcd opened for output.
+PROGRAM_RESULT: 7 instructions / 7 cycles; 4 concurrent data accesses; x3=4
+TB_HARVARD_DEMO: PASS (36 checks)
+tb/tb_harvard_demo.v:86: $finish called at 210000 (1ps)

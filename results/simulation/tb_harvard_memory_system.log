@@ -1,0 +1,4 @@
+VCD info: dumpfile results/waveforms/tb_harvard_memory_system.vcd opened for output.
+HARVARD_SIMULTANEOUS: pc=00000024 instruction=00900493 data=00000011 instruction_valid=1 data_read_valid=1
+TB_HARVARD_MEMORY_SYSTEM: PASS (36 checks)
+tb/tb_harvard_memory_system.v:205: $finish called at 171000 (1ps)

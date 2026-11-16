@@ -1,0 +1,15 @@
+# Memory Hierarchy Performance Measurement
+
+Workload: one instruction fetch and one data read requested simultaneously.
+Counting: rising edges counted until both completion signals are observed.
+
+| Architecture | Completion cycles | Throughput (operations/cycle) |
+|---|---:|---:|
+| Harvard (separate ports) | 1 | 2.00 |
+| Shared single port | 2 | 1.00 |
+
+Speedup = shared cycles / Harvard cycles = 2 / 1 = 2.00
+
+Harvard observed: instruction 00100093, data 00000011
+Shared observed:  instruction 00100093, data 00000011
+Both requests completed and returned the expected values.

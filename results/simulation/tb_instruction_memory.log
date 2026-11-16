@@ -1,0 +1,3 @@
+VCD info: dumpfile results/waveforms/tb_instruction_memory.vcd opened for output.
+TB_INSTRUCTION_MEMORY: PASS (38 checks)
+tb/tb_instruction_memory.v:109: $finish called at 191000 (1ps)

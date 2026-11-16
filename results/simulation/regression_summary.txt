@@ -1,0 +1,4 @@
+Memory Hierarchy regression summary
+Total tests: 8
+Passed: 8
+Failed: 0

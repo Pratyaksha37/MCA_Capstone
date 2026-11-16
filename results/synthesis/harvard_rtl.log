@@ -1,0 +1,578 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+
+-- Running command `read_verilog rtl/address_decoder.v rtl/program_counter.v rtl/instruction_memory.v rtl/instruction_fetch.v rtl/data_memory.v rtl/memory_controller.v rtl/harvard_memory_system.v rtl/shared_port_memory.v rtl/harvard_demo.v; hierarchy -top harvard_memory_system; proc; opt; check -assert; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/address_decoder.v
+Parsing Verilog input from `rtl/address_decoder.v' to AST representation.
+Generating RTLIL representation for module `\address_decoder'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/program_counter.v
+Parsing Verilog input from `rtl/program_counter.v' to AST representation.
+Generating RTLIL representation for module `\program_counter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/instruction_memory.v
+Parsing Verilog input from `rtl/instruction_memory.v' to AST representation.
+Generating RTLIL representation for module `\instruction_memory'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/instruction_fetch.v
+Parsing Verilog input from `rtl/instruction_fetch.v' to AST representation.
+Generating RTLIL representation for module `\instruction_fetch'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/data_memory.v
+Parsing Verilog input from `rtl/data_memory.v' to AST representation.
+Generating RTLIL representation for module `\data_memory'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/memory_controller.v
+Parsing Verilog input from `rtl/memory_controller.v' to AST representation.
+Generating RTLIL representation for module `\memory_controller'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/harvard_memory_system.v
+Parsing Verilog input from `rtl/harvard_memory_system.v' to AST representation.
+Generating RTLIL representation for module `\harvard_memory_system'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/shared_port_memory.v
+Parsing Verilog input from `rtl/shared_port_memory.v' to AST representation.
+Generating RTLIL representation for module `\shared_port_memory'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/harvard_demo.v
+Parsing Verilog input from `rtl/harvard_demo.v' to AST representation.
+Generating RTLIL representation for module `\harvard_demo'.
+Successfully finished Verilog frontend.
+
+10. Executing HIERARCHY pass (managing design hierarchy).
+
+10.1. Analyzing design hierarchy..
+Top module:  \harvard_memory_system
+Used module:     \data_memory
+Used module:         \address_decoder
+Used module:     \memory_controller
+Used module:     \instruction_fetch
+Used module:         \instruction_memory
+Used module:         \program_counter
+
+10.2. Analyzing design hierarchy..
+Top module:  \harvard_memory_system
+Used module:     \data_memory
+Used module:         \address_decoder
+Used module:     \memory_controller
+Used module:     \instruction_fetch
+Used module:         \instruction_memory
+Used module:         \program_counter
+Removing unused module `\harvard_demo'.
+Removing unused module `\shared_port_memory'.
+Removed 2 unused modules.
+
+11. Executing PROC pass (convert processes to netlists).
+
+11.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+Cleaned up 1 empty switch.
+
+11.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$rtl/memory_controller.v:22$119 in module memory_controller.
+Marked 1 switch rules as full_case in process $proc$rtl/data_memory.v:41$78 in module data_memory.
+Marked 1 switch rules as full_case in process $proc$rtl/program_counter.v:11$4 in module program_counter.
+Removed a total of 0 dead cases.
+
+11.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 38 assignments to connections.
+
+11.4. Executing PROC_INIT pass (extract init attributes).
+
+11.5. Executing PROC_ARST pass (detect async resets in processes).
+
+11.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~5 debug messages>
+
+11.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+     1/8: $3\write_enable[0:0]
+     2/8: $3\read_enable[0:0]
+     3/8: $2\access_error[0:0]
+     4/8: $2\write_enable[0:0]
+     5/8: $2\read_enable[0:0]
+     6/8: $1\access_error[0:0]
+     7/8: $1\write_enable[0:0]
+     8/8: $1\read_enable[0:0]
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+     1/3: $1$memwr$\mem$rtl/data_memory.v:43$57_EN[31:0]$85
+     2/3: $1$memwr$\mem$rtl/data_memory.v:43$57_DATA[31:0]$84
+     3/3: $1$memwr$\mem$rtl/data_memory.v:43$57_ADDR[3:0]$83
+Creating decoders for process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+Creating decoders for process `\program_counter.$proc$rtl/program_counter.v:11$4'.
+     1/1: $0\pc[31:0]
+
+11.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\memory_controller.\read_enable' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+No latch inferred for signal `\memory_controller.\write_enable' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+No latch inferred for signal `\memory_controller.\access_error' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:47$58_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:48$59_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:49$60_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:50$61_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:51$62_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:52$63_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:53$64_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:54$65_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:55$66_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:56$67_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:57$68_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:58$69_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:59$70_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:60$71_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:61$72_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:62$73_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:29$6_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:30$7_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:31$8_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:32$9_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:33$10_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:34$11_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:35$12_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:36$13_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:37$14_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:38$15_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:39$16_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:40$17_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:41$18_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:42$19_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:43$20_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+No latch inferred for signal `\instruction_memory.$memwr$\mem$rtl/instruction_memory.v:44$21_EN' from process `\instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+
+11.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_ADDR' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$504' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_DATA' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$505' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_EN' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$506' with positive edge clock.
+Creating register for signal `\program_counter.\pc' using process `\program_counter.$proc$rtl/program_counter.v:11$4'.
+  created $dff cell `$procdff$507' with positive edge clock.
+
+11.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 3 empty switches in `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+Removing empty process `memory_controller.$proc$rtl/memory_controller.v:22$119'.
+Removing empty process `data_memory.$proc$rtl/data_memory.v:46$102'.
+Found and cleaned up 1 empty switch in `\data_memory.$proc$rtl/data_memory.v:41$78'.
+Removing empty process `data_memory.$proc$rtl/data_memory.v:41$78'.
+Removing empty process `instruction_memory.$proc$rtl/instruction_memory.v:28$40'.
+Found and cleaned up 1 empty switch in `\program_counter.$proc$rtl/program_counter.v:11$4'.
+Removing empty process `program_counter.$proc$rtl/program_counter.v:11$4'.
+Cleaned up 5 empty switches.
+
+11.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module harvard_memory_system.
+Optimizing module memory_controller.
+<suppressed ~5 debug messages>
+Optimizing module data_memory.
+Optimizing module instruction_fetch.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module address_decoder.
+<suppressed ~2 debug messages>
+
+12. Executing OPT pass (performing simple optimizations).
+
+12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module harvard_memory_system.
+Optimizing module memory_controller.
+Optimizing module data_memory.
+Optimizing module instruction_fetch.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module address_decoder.
+
+12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\harvard_memory_system'.
+Computing hashes of 3 cells of `\harvard_memory_system'.
+Finding duplicate cells in `\harvard_memory_system'.
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 17 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\data_memory'.
+Computing hashes of 29 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Computing hashes of 28 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\instruction_fetch'.
+Computing hashes of 2 cells of `\instruction_fetch'.
+Finding duplicate cells in `\instruction_fetch'.
+Finding identical cells in module `\instruction_memory'.
+Computing hashes of 19 cells of `\instruction_memory'.
+Finding duplicate cells in `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Computing hashes of 3 cells of `\program_counter'.
+Finding duplicate cells in `\program_counter'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 1 cells.
+
+12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \harvard_memory_system..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$481.
+    dead port 2/2 on $mux $procmux$475.
+    dead port 2/2 on $mux $procmux$469.
+    dead port 2/2 on $mux $procmux$463.
+    dead port 2/2 on $mux $procmux$461.
+    dead port 2/2 on $mux $procmux$454.
+    dead port 2/2 on $mux $procmux$452.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 7 multiplexer ports.
+<suppressed ~30 debug messages>
+
+12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \harvard_memory_system.
+  Optimizing cells in module \memory_controller.
+  Optimizing cells in module \data_memory.
+    Consolidated identical input bits for $mux cell $procmux$493:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$493_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$493_Y [0]
+      New connections: $procmux$493_Y [31:1] = { $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] $procmux$493_Y [0] }
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \instruction_fetch.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \address_decoder.
+Performed a total of 1 changes.
+
+12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\harvard_memory_system'.
+Computing hashes of 3 cells of `\harvard_memory_system'.
+Finding duplicate cells in `\harvard_memory_system'.
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 10 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\data_memory'.
+Computing hashes of 28 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Finding identical cells in module `\instruction_fetch'.
+Computing hashes of 2 cells of `\instruction_fetch'.
+Finding duplicate cells in `\instruction_fetch'.
+Finding identical cells in module `\instruction_memory'.
+Computing hashes of 19 cells of `\instruction_memory'.
+Finding duplicate cells in `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Computing hashes of 3 cells of `\program_counter'.
+Finding duplicate cells in `\program_counter'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+12.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$507 ($dff) from module program_counter (D = $add$rtl/program_counter.v:15$5_Y, Q = \pc, rval = 0).
+
+12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \harvard_memory_system..
+Finding unused cells or wires in module \memory_controller..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \instruction_fetch..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \address_decoder..
+Removed 5 unused cells and 123 unused wires.
+<suppressed ~10 debug messages>
+
+12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module harvard_memory_system.
+Optimizing module memory_controller.
+Optimizing module data_memory.
+Optimizing module instruction_fetch.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module address_decoder.
+
+12.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+12.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \harvard_memory_system..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \instruction_fetch..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \instruction_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \program_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+12.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \harvard_memory_system.
+  Optimizing cells in module \memory_controller.
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module \instruction_fetch.
+  Optimizing cells in module \instruction_memory.
+  Optimizing cells in module \program_counter.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+12.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\harvard_memory_system'.
+Computing hashes of 3 cells of `\harvard_memory_system'.
+Finding duplicate cells in `\harvard_memory_system'.
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 9 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\data_memory'.
+Computing hashes of 25 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Finding identical cells in module `\instruction_fetch'.
+Computing hashes of 2 cells of `\instruction_fetch'.
+Finding duplicate cells in `\instruction_fetch'.
+Finding identical cells in module `\instruction_memory'.
+Computing hashes of 19 cells of `\instruction_memory'.
+Finding duplicate cells in `\instruction_memory'.
+Finding identical cells in module `\program_counter'.
+Computing hashes of 2 cells of `\program_counter'.
+Finding duplicate cells in `\program_counter'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+12.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \harvard_memory_system..
+Finding unused cells or wires in module \memory_controller..
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module \instruction_fetch..
+Finding unused cells or wires in module \instruction_memory..
+Finding unused cells or wires in module \program_counter..
+Finding unused cells or wires in module \address_decoder..
+
+12.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module harvard_memory_system.
+Optimizing module memory_controller.
+Optimizing module data_memory.
+Optimizing module instruction_fetch.
+Optimizing module instruction_memory.
+Optimizing module program_counter.
+Optimizing module address_decoder.
+
+12.16. Finished fast OPT passes. (There is nothing left to do.)
+
+13. Executing CHECK pass (checking for obvious problems).
+Checking module harvard_memory_system...
+Checking module memory_controller...
+Checking module data_memory...
+Checking module instruction_fetch...
+Checking module instruction_memory...
+Checking module program_counter...
+Checking module address_decoder...
+Found and reported 0 problems.
+
+14. Printing statistics.
+
+=== harvard_memory_system ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+      169 wire bits
+       14 public wires
+      169 public wire bits
+       13 ports
+      168 port bits
+        3 submodules
+        1   data_memory
+        1   instruction_fetch
+        1   memory_controller
+
+=== memory_controller ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       12 wires
+       12 wire bits
+        6 public wires
+        6 public wire bits
+        6 ports
+        6 port bits
+        9 cells
+        1   $logic_or
+        8   $mux
+
+=== data_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       16 wires
+      208 wire bits
+       11 public wires
+      107 public wire bits
+        8 ports
+      101 port bits
+        1 memories
+      512 memory bits
+       24 cells
+        2   $logic_and
+       16   $meminit_v2
+        1   $memrd
+        1   $memwr_v2
+        4   $mux
+        1 submodules
+        1   address_decoder
+
+=== instruction_fetch ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        6 wires
+       99 wire bits
+        6 public wires
+       99 public wire bits
+        5 ports
+       67 port bits
+        2 submodules
+        1   instruction_memory
+        1   program_counter
+
+=== instruction_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        7 wires
+      103 wire bits
+        6 public wires
+       71 public wire bits
+        3 ports
+       65 port bits
+        1 memories
+      512 memory bits
+       18 cells
+       16   $meminit_v2
+        1   $memrd
+        1   $mux
+        1 submodules
+        1   address_decoder
+
+=== program_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        4 wires
+       66 wire bits
+        3 public wires
+       34 public wire bits
+        3 ports
+       34 port bits
+        2 cells
+        1   $add
+        1   $sdff
+
+=== address_decoder ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       39 wire bits
+        5 public wires
+       39 public wire bits
+        5 ports
+       39 port bits
+        3 cells
+        1   $logic_and
+        2   $logic_not
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+       59 harvard_memory_system
+       24 data_memory
+        3   address_decoder
+       18   instruction_memory
+        3     address_decoder
+        2   program_counter
+        9 memory_controller
+
+        +----------Count including submodules.
+        | 
+       69 wires
+      735 wire bits
+       56 public wires
+      564 public wire bits
+       48 ports
+      519 port bits
+        2 memories
+     1024 memory bits
+        - processes
+       59 cells
+        1   $add
+        4   $logic_and
+        4   $logic_not
+        1   $logic_or
+       32   $meminit_v2
+        2   $memrd
+        1   $memwr_v2
+       13   $mux
+        1   $sdff
+        3 submodules
+        1   data_memory
+        1   instruction_fetch
+        1   memory_controller
+
+End of script. Logfile hash: b8393def3e, time: 0.04s, user: 0.02s, system: 0.01s, MEM: 18.03 MB peak
+Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+Time spent: 66% 10x read_verilog (0 sec), 5% 2x opt_clean (0 sec), ...

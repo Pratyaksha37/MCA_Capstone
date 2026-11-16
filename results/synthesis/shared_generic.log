@@ -1,0 +1,660 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+
+-- Running command `read_verilog rtl/address_decoder.v rtl/program_counter.v rtl/instruction_memory.v rtl/instruction_fetch.v rtl/data_memory.v rtl/memory_controller.v rtl/harvard_memory_system.v rtl/shared_port_memory.v rtl/harvard_demo.v; hierarchy -top shared_port_memory; proc; opt; memory; opt; techmap; opt; check -assert; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/address_decoder.v
+Parsing Verilog input from `rtl/address_decoder.v' to AST representation.
+Generating RTLIL representation for module `\address_decoder'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/program_counter.v
+Parsing Verilog input from `rtl/program_counter.v' to AST representation.
+Generating RTLIL representation for module `\program_counter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/instruction_memory.v
+Parsing Verilog input from `rtl/instruction_memory.v' to AST representation.
+Generating RTLIL representation for module `\instruction_memory'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/instruction_fetch.v
+Parsing Verilog input from `rtl/instruction_fetch.v' to AST representation.
+Generating RTLIL representation for module `\instruction_fetch'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/data_memory.v
+Parsing Verilog input from `rtl/data_memory.v' to AST representation.
+Generating RTLIL representation for module `\data_memory'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/memory_controller.v
+Parsing Verilog input from `rtl/memory_controller.v' to AST representation.
+Generating RTLIL representation for module `\memory_controller'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/harvard_memory_system.v
+Parsing Verilog input from `rtl/harvard_memory_system.v' to AST representation.
+Generating RTLIL representation for module `\harvard_memory_system'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/shared_port_memory.v
+Parsing Verilog input from `rtl/shared_port_memory.v' to AST representation.
+Generating RTLIL representation for module `\shared_port_memory'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/harvard_demo.v
+Parsing Verilog input from `rtl/harvard_demo.v' to AST representation.
+Generating RTLIL representation for module `\harvard_demo'.
+Successfully finished Verilog frontend.
+
+10. Executing HIERARCHY pass (managing design hierarchy).
+
+10.1. Analyzing design hierarchy..
+Top module:  \shared_port_memory
+
+10.2. Analyzing design hierarchy..
+Top module:  \shared_port_memory
+Removing unused module `\harvard_demo'.
+Removing unused module `\harvard_memory_system'.
+Removing unused module `\memory_controller'.
+Removing unused module `\data_memory'.
+Removing unused module `\instruction_fetch'.
+Removing unused module `\instruction_memory'.
+Removing unused module `\program_counter'.
+Removing unused module `\address_decoder'.
+Removed 8 unused modules.
+
+11. Executing PROC pass (convert processes to netlists).
+
+11.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+11.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 4 switch rules as full_case in process $proc$rtl/shared_port_memory.v:84$183 in module shared_port_memory.
+Removed a total of 0 dead cases.
+
+11.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 35 assignments to connections.
+
+11.4. Executing PROC_INIT pass (extract init attributes).
+
+11.5. Executing PROC_ARST pass (detect async resets in processes).
+
+11.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~5 debug messages>
+
+11.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+Creating decoders for process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+     1/20: $4$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$203
+     2/20: $4$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$202
+     3/20: $4$memwr$\mem$rtl/shared_port_memory.v:112$122_ADDR[4:0]$201
+     4/20: $3$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$200
+     5/20: $3$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$199
+     6/20: $3$memwr$\mem$rtl/shared_port_memory.v:112$122_ADDR[4:0]$198
+     7/20: $2$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$192
+     8/20: $2$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$191
+     9/20: $2$memwr$\mem$rtl/shared_port_memory.v:112$122_ADDR[4:0]$190
+    10/20: $0\data_done[0:0]
+    11/20: $0\instr_done[0:0]
+    12/20: $1$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$189
+    13/20: $1$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$188
+    14/20: $1$memwr$\mem$rtl/shared_port_memory.v:112$122_ADDR[4:0]$187
+    15/20: $0\pending_wdata[31:0]
+    16/20: $0\pending_write[0:0]
+    17/20: $0\pending_addr[31:0]
+    18/20: $0\pending_valid[0:0]
+    19/20: $0\data_rdata[31:0]
+    20/20: $0\instr_rdata[31:0]
+
+11.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:125$123_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:126$124_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:127$125_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:128$126_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:129$127_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:130$128_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:131$129_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:132$130_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:133$131_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:134$132_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:135$133_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:136$134_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:137$135_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:138$136_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:139$137_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:140$138_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:143$139_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:144$140_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:145$141_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:146$142_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:147$143_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:148$144_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:149$145_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:150$146_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:151$147_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:152$148_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:153$149_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:154$150_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:155$151_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:156$152_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:157$153_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+No latch inferred for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:158$154_EN' from process `\shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+
+11.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\shared_port_memory.\instr_rdata' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$605' with positive edge clock.
+Creating register for signal `\shared_port_memory.\instr_done' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$606' with positive edge clock.
+Creating register for signal `\shared_port_memory.\data_rdata' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$607' with positive edge clock.
+Creating register for signal `\shared_port_memory.\data_done' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$608' with positive edge clock.
+Creating register for signal `\shared_port_memory.\pending_valid' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$609' with positive edge clock.
+Creating register for signal `\shared_port_memory.\pending_addr' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$610' with positive edge clock.
+Creating register for signal `\shared_port_memory.\pending_write' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$611' with positive edge clock.
+Creating register for signal `\shared_port_memory.\pending_wdata' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$612' with positive edge clock.
+Creating register for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:112$122_ADDR' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$613' with positive edge clock.
+Creating register for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$614' with positive edge clock.
+Creating register for signal `\shared_port_memory.$memwr$\mem$rtl/shared_port_memory.v:112$122_EN' using process `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+  created $dff cell `$procdff$615' with positive edge clock.
+
+11.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `shared_port_memory.$proc$rtl/shared_port_memory.v:123$236'.
+Found and cleaned up 5 empty switches in `\shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+Removing empty process `shared_port_memory.$proc$rtl/shared_port_memory.v:84$183'.
+Cleaned up 5 empty switches.
+
+11.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+<suppressed ~5 debug messages>
+
+12. Executing OPT pass (performing simple optimizations).
+
+12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 130 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Computing hashes of 127 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$526.
+    dead port 1/2 on $mux $procmux$520.
+    dead port 1/2 on $mux $procmux$514.
+    dead port 1/2 on $mux $procmux$508.
+    dead port 1/2 on $mux $procmux$505.
+    dead port 1/2 on $mux $procmux$499.
+    dead port 1/2 on $mux $procmux$496.
+    dead port 1/2 on $mux $procmux$490.
+    dead port 1/2 on $mux $procmux$487.
+    dead port 1/2 on $mux $procmux$481.
+    dead port 1/2 on $mux $procmux$478.
+    dead port 2/2 on $mux $procmux$475.
+    dead port 1/2 on $mux $procmux$469.
+    dead port 1/2 on $mux $procmux$466.
+    dead port 2/2 on $mux $procmux$463.
+    dead port 1/2 on $mux $procmux$457.
+    dead port 1/2 on $mux $procmux$454.
+    dead port 2/2 on $mux $procmux$451.
+Removed 18 multiplexer ports.
+<suppressed ~77 debug messages>
+
+12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+    Consolidated identical input bits for $mux cell $procmux$449:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$449_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$449_Y [0]
+      New connections: $procmux$449_Y [31:1] = { $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] $procmux$449_Y [0] }
+  Optimizing cells in module \shared_port_memory.
+    Consolidated identical input bits for $mux cell $procmux$484:
+      Old ports: A=0, B=$4$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$203, Y=$procmux$484_Y
+      New ports: A=1'0, B=$procmux$449_Y [0], Y=$procmux$484_Y [0]
+      New connections: $procmux$484_Y [31:1] = { $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] $procmux$484_Y [0] }
+  Optimizing cells in module \shared_port_memory.
+    Consolidated identical input bits for $mux cell $procmux$511:
+      Old ports: A=$3$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$200, B=0, Y=$procmux$511_Y
+      New ports: A=$procmux$484_Y [0], B=1'0, Y=$procmux$511_Y [0]
+      New connections: $procmux$511_Y [31:1] = { $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] $procmux$511_Y [0] }
+  Optimizing cells in module \shared_port_memory.
+    Consolidated identical input bits for $mux cell $procmux$544:
+      Old ports: A=$2$memwr$\mem$rtl/shared_port_memory.v:112$122_EN[31:0]$192, B=0, Y=$procmux$544_Y
+      New ports: A=$procmux$511_Y [0], B=1'0, Y=$procmux$544_Y [0]
+      New connections: $procmux$544_Y [31:1] = { $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] $procmux$544_Y [0] }
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 4 changes.
+
+12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 109 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+12.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$605 ($dff) from module shared_port_memory (D = $procmux$600_Y, Q = \instr_rdata, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$617 ($sdff) from module shared_port_memory (D = $memrd$\mem$rtl/shared_port_memory.v:72$167_DATA, Q = \instr_rdata).
+Adding SRST signal on $procdff$606 ($dff) from module shared_port_memory (D = $procmux$538_Y, Q = \instr_done, rval = 1'0).
+Adding SRST signal on $procdff$607 ($dff) from module shared_port_memory (D = $procmux$594_Y, Q = \data_rdata, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$620 ($sdff) from module shared_port_memory (D = $procmux$589_Y, Q = \data_rdata).
+Adding SRST signal on $procdff$608 ($dff) from module shared_port_memory (D = $procmux$529_Y, Q = \data_done, rval = 1'0).
+Adding SRST signal on $procdff$609 ($dff) from module shared_port_memory (D = $procmux$582_Y, Q = \pending_valid, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$629 ($sdff) from module shared_port_memory (D = $procmux$582_Y, Q = \pending_valid).
+Adding SRST signal on $procdff$610 ($dff) from module shared_port_memory (D = $procmux$571_Y, Q = \pending_addr, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$637 ($sdff) from module shared_port_memory (D = \data_addr, Q = \pending_addr).
+Adding SRST signal on $procdff$611 ($dff) from module shared_port_memory (D = $procmux$563_Y, Q = \pending_write, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$641 ($sdff) from module shared_port_memory (D = \data_write, Q = \pending_write).
+Adding SRST signal on $procdff$612 ($dff) from module shared_port_memory (D = $procmux$555_Y, Q = \pending_wdata, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$645 ($sdff) from module shared_port_memory (D = \data_wdata, Q = \pending_wdata).
+
+12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+Removed 21 unused cells and 197 unused wires.
+<suppressed ~22 debug messages>
+
+12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+<suppressed ~1 debug messages>
+
+12.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+12.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~37 debug messages>
+
+12.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+12.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 97 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Computing hashes of 95 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+12.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+12.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+12.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+12.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~37 debug messages>
+
+12.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+12.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 95 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+12.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+
+12.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+12.23. Finished fast OPT passes. (There is nothing left to do.)
+
+13. Executing MEMORY pass.
+
+13.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+13.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+13.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing shared_port_memory.mem write port 0.
+
+13.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+13.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\mem'[0] in module `\shared_port_memory':
+    no output FF found.
+Checking read port address `\mem'[0] in module `\shared_port_memory':
+    no address FF found.
+
+13.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+
+13.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+13.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+13.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+
+13.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+13.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \mem in module \shared_port_memory:
+  created 32 $dff cells and 0 static cells of width 32.
+  read interface: 0 $dff and 31 $mux cells.
+  write interface: 32 write mux blocks.
+
+14. Executing OPT pass (performing simple optimizations).
+
+14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+<suppressed ~10 debug messages>
+
+14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 241 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~293 debug messages>
+
+14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 241 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+Removed 0 unused cells and 69 unused wires.
+<suppressed ~1 debug messages>
+
+14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~293 debug messages>
+
+14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 241 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+14.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\mem[0]$651 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[0]).
+Adding EN signal on $memory\mem[1]$653 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[1]).
+Adding EN signal on $memory\mem[2]$655 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[2]).
+Adding EN signal on $memory\mem[3]$657 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[3]).
+Adding EN signal on $memory\mem[4]$659 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[4]).
+Adding EN signal on $memory\mem[5]$661 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[5]).
+Adding EN signal on $memory\mem[6]$663 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[6]).
+Adding EN signal on $memory\mem[7]$665 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[7]).
+Adding EN signal on $memory\mem[8]$667 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[8]).
+Adding EN signal on $memory\mem[9]$669 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[9]).
+Adding EN signal on $memory\mem[10]$671 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[10]).
+Adding EN signal on $memory\mem[11]$673 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[11]).
+Adding EN signal on $memory\mem[12]$675 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[12]).
+Adding EN signal on $memory\mem[13]$677 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[13]).
+Adding EN signal on $memory\mem[14]$679 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[14]).
+Adding EN signal on $memory\mem[15]$681 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[15]).
+Adding EN signal on $memory\mem[16]$683 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[16]).
+Adding EN signal on $memory\mem[17]$685 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[17]).
+Adding EN signal on $memory\mem[18]$687 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[18]).
+Adding EN signal on $memory\mem[19]$689 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[19]).
+Adding EN signal on $memory\mem[20]$691 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[20]).
+Adding EN signal on $memory\mem[21]$693 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[21]).
+Adding EN signal on $memory\mem[22]$695 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[22]).
+Adding EN signal on $memory\mem[23]$697 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[23]).
+Adding EN signal on $memory\mem[24]$699 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[24]).
+Adding EN signal on $memory\mem[25]$701 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[25]).
+Adding EN signal on $memory\mem[26]$703 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[26]).
+Adding EN signal on $memory\mem[27]$705 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[27]).
+Adding EN signal on $memory\mem[28]$707 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[28]).
+Adding EN signal on $memory\mem[29]$709 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[29]).
+Adding EN signal on $memory\mem[30]$711 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[30]).
+Adding EN signal on $memory\mem[31]$713 ($dff) from module shared_port_memory (D = $0$memwr$\mem$rtl/shared_port_memory.v:112$122_DATA[31:0]$185, Q = \mem[31]).
+
+14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+Removed 32 unused cells and 32 unused wires.
+<suppressed ~33 debug messages>
+
+14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+14.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+14.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~69 debug messages>
+
+14.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+14.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 209 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+14.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+14.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+
+14.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+14.23. Finished fast OPT passes. (There is nothing left to do.)
+
+15. Executing TECHMAP pass (map to technology primitives).
+
+15.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.70/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+15.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $logic_or.
+No more expansions possible.
+<suppressed ~286 debug messages>
+
+16. Executing OPT pass (performing simple optimizations).
+
+16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+<suppressed ~37 debug messages>
+
+16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 2572 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Computing hashes of 2569 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+16.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 2569 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+16.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+Removed 56 unused cells and 13 unused wires.
+<suppressed ~57 debug messages>
+
+16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+16.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+16.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \shared_port_memory..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+16.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \shared_port_memory.
+Performed a total of 0 changes.
+
+16.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\shared_port_memory'.
+Computing hashes of 2513 cells of `\shared_port_memory'.
+Finding duplicate cells in `\shared_port_memory'.
+Removed a total of 0 cells.
+
+16.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+16.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \shared_port_memory..
+
+16.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module shared_port_memory.
+
+16.16. Finished fast OPT passes. (There is nothing left to do.)
+
+17. Executing CHECK pass (checking for obvious problems).
+Checking module shared_port_memory...
+Found and reported 0 problems.
+
+18. Printing statistics.
+
+=== shared_port_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      227 wires
+     2774 wire bits
+       64 public wires
+     1377 public wire bits
+       15 ports
+      170 port bits
+     2513 cells
+       97   $_AND_
+     1024   $_DFFE_PP_
+     1219   $_MUX_
+       14   $_NOT_
+       55   $_OR_
+      102   $_SDFFE_PP0P_
+        2   $_SDFF_PP0_
+
+End of script. Logfile hash: 3f6f289dbf, time: 0.07s, user: 0.07s, system: 0.00s, MEM: 23.50 MB peak
+Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+Time spent: 21% 11x read_verilog (0 sec), 20% 12x opt_expr (0 sec), ...

@@ -1,0 +1,12 @@
+VCD info: dumpfile results/waveforms/tb_memory_comparison.vcd opened for output.
+PERFORMANCE_RESULT:
+  workload                   = 1 instruction fetch + 1 data read (simultaneous)
+  Harvard completion cycles  = 1
+  Shared completion cycles   = 2
+  Speedup (shared/harvard)   = 2.00
+  Harvard throughput         = 2.00 operations/cycle
+  Shared throughput          = 1.00 operations/cycle
+  Harvard results            = instr 00100093, data 00000011
+  Shared results             = instr 00100093, data 00000011
+TB_MEMORY_COMPARISON: PASS (14 checks)
+tb/tb_memory_comparison.v:274: $finish called at 80000 (1ps)

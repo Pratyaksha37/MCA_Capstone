@@ -1,0 +1,7 @@
+Waveform verification: PASS
+8 VCD files contain signal declarations and timestamped samples.
+Harvard: PC=4, instruction=00100093 and data=00000011 valid together.
+Shared: instruction completion/pending precedes data completion by 10 ns.
+Shared instruction/data service signals never overlap.
+Measured cycle counters: Harvard=1, shared=2.
+Program: halted with 7 retired instructions and x3=4.

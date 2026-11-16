@@ -1,0 +1,6 @@
+VCD info: dumpfile results/waveforms/tb_shared_port_memory.vcd opened for output.
+SHARED_ARBITRATION: service_instr=1 service_data=0 pending_data=0
+SHARED_AFTER_CYCLE1: service_instr=0 service_data=1 instr_done=1 data_done=0 pending_data=1 instr=00000013
+SHARED_AFTER_CYCLE2: service_instr=1 service_data=0 instr_done=0 data_done=1 pending_data=0 data=00000011
+TB_SHARED_PORT_MEMORY: PASS (40 checks)
+tb/tb_shared_port_memory.v:198: $finish called at 270000 (1ps)

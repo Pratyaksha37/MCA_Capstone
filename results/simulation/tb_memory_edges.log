@@ -1,0 +1,3 @@
+VCD info: dumpfile results/waveforms/tb_memory_edges.vcd opened for output.
+TB_MEMORY_EDGES: PASS (825 checks)
+tb/tb_memory_edges.v:112: $finish called at 5320000 (1ps)

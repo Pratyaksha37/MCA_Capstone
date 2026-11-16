@@ -1,0 +1,1043 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+
+-- Running command `read_verilog rtl/address_decoder.v rtl/program_counter.v rtl/instruction_memory.v rtl/instruction_fetch.v rtl/data_memory.v rtl/memory_controller.v rtl/harvard_memory_system.v rtl/shared_port_memory.v rtl/harvard_demo.v; hierarchy -top harvard_demo; proc; opt; check -assert; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/address_decoder.v
+Parsing Verilog input from `rtl/address_decoder.v' to AST representation.
+Generating RTLIL representation for module `\address_decoder'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/program_counter.v
+Parsing Verilog input from `rtl/program_counter.v' to AST representation.
+Generating RTLIL representation for module `\program_counter'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/instruction_memory.v
+Parsing Verilog input from `rtl/instruction_memory.v' to AST representation.
+Generating RTLIL representation for module `\instruction_memory'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/instruction_fetch.v
+Parsing Verilog input from `rtl/instruction_fetch.v' to AST representation.
+Generating RTLIL representation for module `\instruction_fetch'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/data_memory.v
+Parsing Verilog input from `rtl/data_memory.v' to AST representation.
+Generating RTLIL representation for module `\data_memory'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/memory_controller.v
+Parsing Verilog input from `rtl/memory_controller.v' to AST representation.
+Generating RTLIL representation for module `\memory_controller'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/harvard_memory_system.v
+Parsing Verilog input from `rtl/harvard_memory_system.v' to AST representation.
+Generating RTLIL representation for module `\harvard_memory_system'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/shared_port_memory.v
+Parsing Verilog input from `rtl/shared_port_memory.v' to AST representation.
+Generating RTLIL representation for module `\shared_port_memory'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/harvard_demo.v
+Parsing Verilog input from `rtl/harvard_demo.v' to AST representation.
+Generating RTLIL representation for module `\harvard_demo'.
+Successfully finished Verilog frontend.
+
+10. Executing HIERARCHY pass (managing design hierarchy).
+
+10.1. Analyzing design hierarchy..
+Top module:  \harvard_demo
+Used module:     \data_memory
+Used module:         \address_decoder
+Used module:     \memory_controller
+Used module:     \instruction_memory
+Parameter \DEMO_PROGRAM = 1
+
+10.2. Executing AST frontend in derive mode using pre-parsed AST for module `\instruction_memory'.
+Parameter \DEMO_PROGRAM = 1
+Generating RTLIL representation for module `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+
+10.3. Analyzing design hierarchy..
+Top module:  \harvard_demo
+Used module:     \data_memory
+Used module:         \address_decoder
+Used module:     \memory_controller
+Used module:     $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001
+
+10.4. Analyzing design hierarchy..
+Top module:  \harvard_demo
+Used module:     \data_memory
+Used module:         \address_decoder
+Used module:     \memory_controller
+Used module:     $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001
+Removing unused module `\shared_port_memory'.
+Removing unused module `\harvard_memory_system'.
+Removing unused module `\instruction_fetch'.
+Removing unused module `\instruction_memory'.
+Removing unused module `\program_counter'.
+Removed 5 unused modules.
+
+11. Executing PROC pass (convert processes to netlists).
+
+11.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+Cleaned up 1 empty switch.
+
+11.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/data_memory.v:41$78 in module data_memory.
+Marked 6 switch rules as full_case in process $proc$rtl/harvard_demo.v:52$327 in module harvard_demo.
+Marked 3 switch rules as full_case in process $proc$rtl/memory_controller.v:22$119 in module memory_controller.
+Removed a total of 0 dead cases.
+
+11.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 91 assignments to connections.
+
+11.4. Executing PROC_INIT pass (extract init attributes).
+
+11.5. Executing PROC_ARST pass (detect async resets in processes).
+
+11.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~10 debug messages>
+
+11.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+Creating decoders for process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+     1/3: $1$memwr$\mem$rtl/data_memory.v:43$57_EN[31:0]$85
+     2/3: $1$memwr$\mem$rtl/data_memory.v:43$57_DATA[31:0]$84
+     3/3: $1$memwr$\mem$rtl/data_memory.v:43$57_ADDR[3:0]$83
+Creating decoders for process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+Creating decoders for process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+     1/67: $5$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$445
+     2/67: $5$memwr$\regs$rtl/harvard_demo.v:69$304_DATA[31:0]$444
+     3/67: $5$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR[4:0]$443
+     4/67: $5$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$438
+     5/67: $5$memwr$\regs$rtl/harvard_demo.v:68$303_DATA[31:0]$437
+     6/67: $5$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR[4:0]$436
+     7/67: $4$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$432
+     8/67: $4$memwr$\regs$rtl/harvard_demo.v:69$304_DATA[31:0]$431
+     9/67: $4$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR[4:0]$430
+    10/67: $4$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$429
+    11/67: $4$memwr$\regs$rtl/harvard_demo.v:68$303_DATA[31:0]$428
+    12/67: $4$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR[4:0]$427
+    13/67: $3$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$425
+    14/67: $3$memwr$\regs$rtl/harvard_demo.v:69$304_DATA[31:0]$424
+    15/67: $3$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR[4:0]$423
+    16/67: $3$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$422
+    17/67: $3$memwr$\regs$rtl/harvard_demo.v:68$303_DATA[31:0]$421
+    18/67: $3$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR[4:0]$420
+    19/67: $2$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$412
+    20/67: $2$memwr$\regs$rtl/harvard_demo.v:69$304_DATA[31:0]$411
+    21/67: $2$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR[4:0]$410
+    22/67: $2$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$409
+    23/67: $2$memwr$\regs$rtl/harvard_demo.v:68$303_DATA[31:0]$408
+    24/67: $2$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR[4:0]$407
+    25/67: $1\i[31:0]
+    26/67: $1$memwr$\regs$rtl/harvard_demo.v:58$302_EN[31:0]$397
+    27/67: $1$memwr$\regs$rtl/harvard_demo.v:58$301_EN[31:0]$396
+    28/67: $1$memwr$\regs$rtl/harvard_demo.v:58$300_EN[31:0]$395
+    29/67: $1$memwr$\regs$rtl/harvard_demo.v:58$299_EN[31:0]$394
+    30/67: $1$memwr$\regs$rtl/harvard_demo.v:58$298_EN[31:0]$393
+    31/67: $1$memwr$\regs$rtl/harvard_demo.v:58$297_EN[31:0]$392
+    32/67: $1$memwr$\regs$rtl/harvard_demo.v:58$296_EN[31:0]$391
+    33/67: $1$memwr$\regs$rtl/harvard_demo.v:58$295_EN[31:0]$390
+    34/67: $1$memwr$\regs$rtl/harvard_demo.v:58$294_EN[31:0]$389
+    35/67: $1$memwr$\regs$rtl/harvard_demo.v:58$293_EN[31:0]$388
+    36/67: $1$memwr$\regs$rtl/harvard_demo.v:58$292_EN[31:0]$387
+    37/67: $1$memwr$\regs$rtl/harvard_demo.v:58$291_EN[31:0]$386
+    38/67: $1$memwr$\regs$rtl/harvard_demo.v:58$290_EN[31:0]$385
+    39/67: $1$memwr$\regs$rtl/harvard_demo.v:58$289_EN[31:0]$384
+    40/67: $1$memwr$\regs$rtl/harvard_demo.v:58$288_EN[31:0]$383
+    41/67: $1$memwr$\regs$rtl/harvard_demo.v:58$287_EN[31:0]$382
+    42/67: $1$memwr$\regs$rtl/harvard_demo.v:58$286_EN[31:0]$381
+    43/67: $1$memwr$\regs$rtl/harvard_demo.v:58$285_EN[31:0]$380
+    44/67: $1$memwr$\regs$rtl/harvard_demo.v:58$284_EN[31:0]$379
+    45/67: $1$memwr$\regs$rtl/harvard_demo.v:58$283_EN[31:0]$378
+    46/67: $1$memwr$\regs$rtl/harvard_demo.v:58$282_EN[31:0]$377
+    47/67: $1$memwr$\regs$rtl/harvard_demo.v:58$281_EN[31:0]$376
+    48/67: $1$memwr$\regs$rtl/harvard_demo.v:58$280_EN[31:0]$375
+    49/67: $1$memwr$\regs$rtl/harvard_demo.v:58$279_EN[31:0]$374
+    50/67: $1$memwr$\regs$rtl/harvard_demo.v:58$278_EN[31:0]$373
+    51/67: $1$memwr$\regs$rtl/harvard_demo.v:58$277_EN[31:0]$372
+    52/67: $1$memwr$\regs$rtl/harvard_demo.v:58$276_EN[31:0]$371
+    53/67: $1$memwr$\regs$rtl/harvard_demo.v:58$275_EN[31:0]$370
+    54/67: $1$memwr$\regs$rtl/harvard_demo.v:58$274_EN[31:0]$369
+    55/67: $1$memwr$\regs$rtl/harvard_demo.v:58$273_EN[31:0]$368
+    56/67: $1$memwr$\regs$rtl/harvard_demo.v:58$272_EN[31:0]$367
+    57/67: $1$memwr$\regs$rtl/harvard_demo.v:58$271_EN[31:0]$366
+    58/67: $1$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$403
+    59/67: $1$memwr$\regs$rtl/harvard_demo.v:69$304_DATA[31:0]$402
+    60/67: $1$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR[4:0]$401
+    61/67: $1$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$400
+    62/67: $1$memwr$\regs$rtl/harvard_demo.v:68$303_DATA[31:0]$399
+    63/67: $1$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR[4:0]$398
+    64/67: $0\retired[31:0]
+    65/67: $0\fault[0:0]
+    66/67: $0\halted[0:0]
+    67/67: $0\pc[31:0]
+Creating decoders for process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+     1/8: $3\write_enable[0:0]
+     2/8: $3\read_enable[0:0]
+     3/8: $2\access_error[0:0]
+     4/8: $2\write_enable[0:0]
+     5/8: $2\read_enable[0:0]
+     6/8: $1\access_error[0:0]
+     7/8: $1\write_enable[0:0]
+     8/8: $1\read_enable[0:0]
+
+11.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:47$58_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:48$59_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:49$60_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:50$61_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:51$62_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:52$63_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:53$64_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:54$65_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:55$66_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:56$67_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:57$68_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:58$69_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:59$70_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:60$71_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:61$72_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:62$73_EN' from process `\data_memory.$proc$rtl/data_memory.v:46$102'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:29$447_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:30$448_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:31$449_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:32$450_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:33$451_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:34$452_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:35$453_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:36$454_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:37$455_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:38$456_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:39$457_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:40$458_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:41$459_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:42$460_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:43$461_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:44$462_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:47$463_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:48$464_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:49$465_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:50$466_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:51$467_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:52$468_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$memwr$\mem$rtl/instruction_memory.v:53$469_EN' from process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+No latch inferred for signal `\memory_controller.\read_enable' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+No latch inferred for signal `\memory_controller.\write_enable' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+No latch inferred for signal `\memory_controller.\access_error' from process `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+
+11.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_ADDR' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$991' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_DATA' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$992' with positive edge clock.
+Creating register for signal `\data_memory.$memwr$\mem$rtl/data_memory.v:43$57_EN' using process `\data_memory.$proc$rtl/data_memory.v:41$78'.
+  created $dff cell `$procdff$993' with positive edge clock.
+Creating register for signal `\harvard_demo.\i' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$994' with positive edge clock.
+Creating register for signal `\harvard_demo.\pc' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$995' with positive edge clock.
+Creating register for signal `\harvard_demo.\halted' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$996' with positive edge clock.
+Creating register for signal `\harvard_demo.\fault' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$997' with positive edge clock.
+Creating register for signal `\harvard_demo.\retired' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$998' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$271_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$999' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$272_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1000' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$273_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1001' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$274_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1002' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$275_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1003' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$276_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1004' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$277_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1005' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$278_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1006' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$279_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1007' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$280_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1008' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$281_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1009' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$282_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1010' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$283_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1011' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$284_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1012' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$285_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1013' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$286_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1014' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$287_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1015' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$288_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1016' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$289_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1017' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$290_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1018' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$291_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1019' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$292_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1020' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$293_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1021' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$294_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1022' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$295_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1023' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$296_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1024' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$297_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1025' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$298_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1026' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$299_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1027' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$300_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1028' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$301_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1029' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:58$302_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1030' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:68$303_ADDR' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1031' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:68$303_DATA' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1032' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:68$303_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1033' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:69$304_ADDR' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1034' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:69$304_DATA' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1035' with positive edge clock.
+Creating register for signal `\harvard_demo.$memwr$\regs$rtl/harvard_demo.v:69$304_EN' using process `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+  created $dff cell `$procdff$1036' with positive edge clock.
+
+11.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `data_memory.$proc$rtl/data_memory.v:46$102'.
+Found and cleaned up 1 empty switch in `\data_memory.$proc$rtl/data_memory.v:41$78'.
+Removing empty process `data_memory.$proc$rtl/data_memory.v:41$78'.
+Removing empty process `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.$proc$rtl/instruction_memory.v:28$495'.
+Found and cleaned up 6 empty switches in `\harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+Removing empty process `harvard_demo.$proc$rtl/harvard_demo.v:52$327'.
+Found and cleaned up 3 empty switches in `\memory_controller.$proc$rtl/memory_controller.v:22$119'.
+Removing empty process `memory_controller.$proc$rtl/memory_controller.v:22$119'.
+Cleaned up 10 empty switches.
+
+11.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_memory.
+Optimizing module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+Optimizing module harvard_demo.
+<suppressed ~3 debug messages>
+Optimizing module memory_controller.
+<suppressed ~5 debug messages>
+Optimizing module address_decoder.
+<suppressed ~2 debug messages>
+
+12. Executing OPT pass (performing simple optimizations).
+
+12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_memory.
+Optimizing module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+Optimizing module harvard_demo.
+Optimizing module memory_controller.
+Optimizing module address_decoder.
+
+12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_memory'.
+Computing hashes of 29 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Computing hashes of 28 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Computing hashes of 26 cells of `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding duplicate cells in `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding identical cells in module `\harvard_demo'.
+Computing hashes of 258 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+Computing hashes of 253 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 17 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 6 cells.
+
+12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \harvard_demo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$785.
+    dead port 1/2 on $mux $procmux$779.
+    dead port 1/2 on $mux $procmux$773.
+    dead port 1/2 on $mux $procmux$767.
+    dead port 1/2 on $mux $procmux$761.
+    dead port 1/2 on $mux $procmux$755.
+    dead port 1/2 on $mux $procmux$749.
+    dead port 2/2 on $mux $procmux$746.
+    dead port 1/2 on $mux $procmux$740.
+    dead port 2/2 on $mux $procmux$737.
+    dead port 1/2 on $mux $procmux$731.
+    dead port 2/2 on $mux $procmux$728.
+    dead port 1/2 on $mux $procmux$722.
+    dead port 2/2 on $mux $procmux$719.
+    dead port 1/2 on $mux $procmux$713.
+    dead port 2/2 on $mux $procmux$710.
+    dead port 1/2 on $mux $procmux$704.
+    dead port 2/2 on $mux $procmux$701.
+    dead port 1/2 on $mux $procmux$695.
+    dead port 2/2 on $mux $procmux$692.
+    dead port 1/2 on $mux $procmux$690.
+    dead port 1/2 on $mux $procmux$683.
+    dead port 2/2 on $mux $procmux$680.
+    dead port 1/2 on $mux $procmux$678.
+    dead port 1/2 on $mux $procmux$671.
+    dead port 2/2 on $mux $procmux$668.
+    dead port 1/2 on $mux $procmux$666.
+    dead port 1/2 on $mux $procmux$659.
+    dead port 2/2 on $mux $procmux$656.
+    dead port 1/2 on $mux $procmux$654.
+    dead port 1/2 on $mux $procmux$647.
+    dead port 2/2 on $mux $procmux$644.
+    dead port 1/2 on $mux $procmux$642.
+    dead port 1/2 on $mux $procmux$635.
+    dead port 2/2 on $mux $procmux$632.
+    dead port 1/2 on $mux $procmux$630.
+    dead port 1/2 on $mux $procmux$623.
+    dead port 2/2 on $mux $procmux$620.
+    dead port 1/2 on $mux $procmux$618.
+    dead port 1/2 on $mux $procmux$615.
+    dead port 1/2 on $mux $procmux$608.
+    dead port 2/2 on $mux $procmux$605.
+    dead port 1/2 on $mux $procmux$603.
+    dead port 1/2 on $mux $procmux$600.
+    dead port 1/2 on $mux $procmux$593.
+    dead port 2/2 on $mux $procmux$590.
+    dead port 1/2 on $mux $procmux$588.
+    dead port 1/2 on $mux $procmux$585.
+    dead port 1/2 on $mux $procmux$578.
+    dead port 2/2 on $mux $procmux$575.
+    dead port 1/2 on $mux $procmux$573.
+    dead port 1/2 on $mux $procmux$570.
+    dead port 1/2 on $mux $procmux$563.
+    dead port 2/2 on $mux $procmux$560.
+    dead port 1/2 on $mux $procmux$558.
+    dead port 1/2 on $mux $procmux$555.
+    dead port 1/2 on $mux $procmux$548.
+    dead port 2/2 on $mux $procmux$545.
+    dead port 1/2 on $mux $procmux$543.
+    dead port 1/2 on $mux $procmux$540.
+Running muxtree optimizer on module \memory_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$980.
+    dead port 2/2 on $mux $procmux$974.
+    dead port 2/2 on $mux $procmux$968.
+    dead port 2/2 on $mux $procmux$962.
+    dead port 2/2 on $mux $procmux$960.
+    dead port 2/2 on $mux $procmux$953.
+    dead port 2/2 on $mux $procmux$951.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 67 multiplexer ports.
+<suppressed ~210 debug messages>
+
+12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_memory.
+    Consolidated identical input bits for $mux cell $procmux$527:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$527_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$527_Y [0]
+      New connections: $procmux$527_Y [31:1] = { $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] $procmux$527_Y [0] }
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+  Optimizing cells in module \harvard_demo.
+    Consolidated identical input bits for $mux cell $procmux$884:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$884_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$884_Y [0]
+      New connections: $procmux$884_Y [31:1] = { $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] $procmux$884_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$881:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$881_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$881_Y [0]
+      New connections: $procmux$881_Y [31:1] = { $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] $procmux$881_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$878:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$878_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$878_Y [0]
+      New connections: $procmux$878_Y [31:1] = { $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] $procmux$878_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$875:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$875_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$875_Y [0]
+      New connections: $procmux$875_Y [31:1] = { $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] $procmux$875_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$872:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$872_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$872_Y [0]
+      New connections: $procmux$872_Y [31:1] = { $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] $procmux$872_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$869:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$869_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$869_Y [0]
+      New connections: $procmux$869_Y [31:1] = { $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] $procmux$869_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$866:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$866_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$866_Y [0]
+      New connections: $procmux$866_Y [31:1] = { $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] $procmux$866_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$863:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$863_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$863_Y [0]
+      New connections: $procmux$863_Y [31:1] = { $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] $procmux$863_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$860:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$860_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$860_Y [0]
+      New connections: $procmux$860_Y [31:1] = { $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] $procmux$860_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$857:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$857_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$857_Y [0]
+      New connections: $procmux$857_Y [31:1] = { $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] $procmux$857_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$854:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$854_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$854_Y [0]
+      New connections: $procmux$854_Y [31:1] = { $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] $procmux$854_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$851:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$851_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$851_Y [0]
+      New connections: $procmux$851_Y [31:1] = { $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] $procmux$851_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$848:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$848_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$848_Y [0]
+      New connections: $procmux$848_Y [31:1] = { $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] $procmux$848_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$845:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$845_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$845_Y [0]
+      New connections: $procmux$845_Y [31:1] = { $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] $procmux$845_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$842:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$842_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$842_Y [0]
+      New connections: $procmux$842_Y [31:1] = { $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] $procmux$842_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$839:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$839_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$839_Y [0]
+      New connections: $procmux$839_Y [31:1] = { $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] $procmux$839_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$836:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$836_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$836_Y [0]
+      New connections: $procmux$836_Y [31:1] = { $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] $procmux$836_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$833:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$833_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$833_Y [0]
+      New connections: $procmux$833_Y [31:1] = { $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] $procmux$833_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$830:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$830_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$830_Y [0]
+      New connections: $procmux$830_Y [31:1] = { $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] $procmux$830_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$827:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$827_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$827_Y [0]
+      New connections: $procmux$827_Y [31:1] = { $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] $procmux$827_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$824:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$824_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$824_Y [0]
+      New connections: $procmux$824_Y [31:1] = { $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] $procmux$824_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$821:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$821_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$821_Y [0]
+      New connections: $procmux$821_Y [31:1] = { $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] $procmux$821_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$818:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$818_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$818_Y [0]
+      New connections: $procmux$818_Y [31:1] = { $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] $procmux$818_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$815:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$815_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$815_Y [0]
+      New connections: $procmux$815_Y [31:1] = { $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] $procmux$815_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$812:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$812_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$812_Y [0]
+      New connections: $procmux$812_Y [31:1] = { $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] $procmux$812_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$809:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$809_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$809_Y [0]
+      New connections: $procmux$809_Y [31:1] = { $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] $procmux$809_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$806:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$806_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$806_Y [0]
+      New connections: $procmux$806_Y [31:1] = { $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] $procmux$806_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$803:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$803_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$803_Y [0]
+      New connections: $procmux$803_Y [31:1] = { $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] $procmux$803_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$800:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$800_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$800_Y [0]
+      New connections: $procmux$800_Y [31:1] = { $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] $procmux$800_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$797:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$797_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$797_Y [0]
+      New connections: $procmux$797_Y [31:1] = { $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] $procmux$797_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$794:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$794_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$794_Y [0]
+      New connections: $procmux$794_Y [31:1] = { $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] $procmux$794_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$791:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$791_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$791_Y [0]
+      New connections: $procmux$791_Y [31:1] = { $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] $procmux$791_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$582:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$582_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$582_Y [0]
+      New connections: $procmux$582_Y [31:1] = { $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] $procmux$582_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$537:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$procmux$537_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$537_Y [0]
+      New connections: $procmux$537_Y [31:1] = { $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] $procmux$537_Y [0] }
+  Optimizing cells in module \harvard_demo.
+    Consolidated identical input bits for $mux cell $procmux$663:
+      Old ports: A=$5$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$438, B=0, Y=$procmux$663_Y
+      New ports: A=$procmux$582_Y [0], B=1'0, Y=$procmux$663_Y [0]
+      New connections: $procmux$663_Y [31:1] = { $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] $procmux$663_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$627:
+      Old ports: A=$5$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$445, B=0, Y=$procmux$627_Y
+      New ports: A=$procmux$537_Y [0], B=1'0, Y=$procmux$627_Y [0]
+      New connections: $procmux$627_Y [31:1] = { $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] $procmux$627_Y [0] }
+  Optimizing cells in module \harvard_demo.
+    Consolidated identical input bits for $mux cell $procmux$726:
+      Old ports: A=$4$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$429, B=0, Y=$procmux$726_Y
+      New ports: A=$procmux$663_Y [0], B=1'0, Y=$procmux$726_Y [0]
+      New connections: $procmux$726_Y [31:1] = { $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] $procmux$726_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$699:
+      Old ports: A=$4$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$432, B=0, Y=$procmux$699_Y
+      New ports: A=$procmux$627_Y [0], B=1'0, Y=$procmux$699_Y [0]
+      New connections: $procmux$699_Y [31:1] = { $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] $procmux$699_Y [0] }
+  Optimizing cells in module \harvard_demo.
+    Consolidated identical input bits for $mux cell $procmux$770:
+      Old ports: A=0, B=$3$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$422, Y=$procmux$770_Y
+      New ports: A=1'0, B=$procmux$726_Y [0], Y=$procmux$770_Y [0]
+      New connections: $procmux$770_Y [31:1] = { $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] $procmux$770_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$752:
+      Old ports: A=0, B=$3$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$425, Y=$procmux$752_Y
+      New ports: A=1'0, B=$procmux$699_Y [0], Y=$procmux$752_Y [0]
+      New connections: $procmux$752_Y [31:1] = { $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] $procmux$752_Y [0] }
+  Optimizing cells in module \harvard_demo.
+    Consolidated identical input bits for $mux cell $procmux$896:
+      Old ports: A=$2$memwr$\regs$rtl/harvard_demo.v:68$303_EN[31:0]$409, B=0, Y=$procmux$896_Y
+      New ports: A=$procmux$770_Y [0], B=1'0, Y=$procmux$896_Y [0]
+      New connections: $procmux$896_Y [31:1] = { $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] $procmux$896_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$887:
+      Old ports: A=$2$memwr$\regs$rtl/harvard_demo.v:69$304_EN[31:0]$412, B=0, Y=$procmux$887_Y
+      New ports: A=$procmux$752_Y [0], B=1'0, Y=$procmux$887_Y [0]
+      New connections: $procmux$887_Y [31:1] = { $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] $procmux$887_Y [0] }
+  Optimizing cells in module \harvard_demo.
+  Optimizing cells in module \memory_controller.
+  Optimizing cells in module \address_decoder.
+Performed a total of 43 changes.
+
+12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_memory'.
+Computing hashes of 28 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Finding identical cells in module `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Computing hashes of 26 cells of `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding duplicate cells in `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding identical cells in module `\harvard_demo'.
+Computing hashes of 193 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+Computing hashes of 162 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+Computing hashes of 131 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+<suppressed ~186 debug messages>
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 10 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 62 cells.
+
+12.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$994 ($dff) from module harvard_demo (D = 32, Q = \i).
+Adding SRST signal on $procdff$995 ($dff) from module harvard_demo (D = $procmux$941_Y, Q = \pc, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$1073 ($sdff) from module harvard_demo (D = $add$rtl/harvard_demo.v:67$433_Y, Q = \pc).
+Adding SRST signal on $procdff$996 ($dff) from module harvard_demo (D = $procmux$929_Y, Q = \halted, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$1081 ($sdff) from module harvard_demo (D = 1'1, Q = \halted).
+Adding SRST signal on $procdff$997 ($dff) from module harvard_demo (D = $procmux$917_Y, Q = \fault, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$1087 ($sdff) from module harvard_demo (D = 1'1, Q = \fault).
+Adding SRST signal on $procdff$998 ($dff) from module harvard_demo (D = $procmux$908_Y, Q = \retired, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$1091 ($sdff) from module harvard_demo (D = $add$rtl/harvard_demo.v:64$426_Y, Q = \retired).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 2 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 1-bit at position 5 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$1072 ($dffe) from module harvard_demo.
+
+12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+Finding unused cells or wires in module \harvard_demo..
+Finding unused cells or wires in module \memory_controller..
+Finding unused cells or wires in module \address_decoder..
+Removed 26 unused cells and 543 unused wires.
+<suppressed ~31 debug messages>
+
+12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_memory.
+Optimizing module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+Optimizing module harvard_demo.
+Optimizing module memory_controller.
+Optimizing module address_decoder.
+
+12.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+12.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \harvard_demo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memory_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~61 debug messages>
+
+12.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+  Optimizing cells in module \harvard_demo.
+  Optimizing cells in module \memory_controller.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+12.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_memory'.
+Computing hashes of 25 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Finding identical cells in module `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Computing hashes of 26 cells of `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding duplicate cells in `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding identical cells in module `\harvard_demo'.
+Computing hashes of 116 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+Computing hashes of 114 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 9 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 2 cells.
+
+12.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+Finding unused cells or wires in module \harvard_demo..
+Finding unused cells or wires in module \memory_controller..
+Finding unused cells or wires in module \address_decoder..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+12.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_memory.
+Optimizing module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+Optimizing module harvard_demo.
+Optimizing module memory_controller.
+Optimizing module address_decoder.
+
+12.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+12.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \harvard_demo..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memory_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~61 debug messages>
+
+12.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_memory.
+  Optimizing cells in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+  Optimizing cells in module \harvard_demo.
+  Optimizing cells in module \memory_controller.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+12.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_memory'.
+Computing hashes of 25 cells of `\data_memory'.
+Finding duplicate cells in `\data_memory'.
+Finding identical cells in module `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Computing hashes of 26 cells of `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding duplicate cells in `$paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001'.
+Finding identical cells in module `\harvard_demo'.
+Computing hashes of 114 cells of `\harvard_demo'.
+Finding duplicate cells in `\harvard_demo'.
+Finding identical cells in module `\memory_controller'.
+Computing hashes of 9 cells of `\memory_controller'.
+Finding duplicate cells in `\memory_controller'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 3 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+12.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+12.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_memory..
+Finding unused cells or wires in module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001..
+Finding unused cells or wires in module \harvard_demo..
+Finding unused cells or wires in module \memory_controller..
+Finding unused cells or wires in module \address_decoder..
+
+12.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_memory.
+Optimizing module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001.
+Optimizing module harvard_demo.
+Optimizing module memory_controller.
+Optimizing module address_decoder.
+
+12.23. Finished fast OPT passes. (There is nothing left to do.)
+
+13. Executing CHECK pass (checking for obvious problems).
+Checking module data_memory...
+Checking module $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001...
+Checking module harvard_demo...
+Checking module memory_controller...
+Checking module address_decoder...
+Found and reported 0 problems.
+
+14. Printing statistics.
+
+=== data_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       16 wires
+      208 wire bits
+       11 public wires
+      107 public wire bits
+        8 ports
+      101 port bits
+        1 memories
+      512 memory bits
+       24 cells
+        2   $logic_and
+       16   $meminit_v2
+        1   $memrd
+        1   $memwr_v2
+        4   $mux
+        1 submodules
+        1   address_decoder
+
+=== $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        7 wires
+      103 wire bits
+        6 public wires
+       71 public wire bits
+        3 ports
+       65 port bits
+        1 memories
+      512 memory bits
+       25 cells
+       23   $meminit_v2
+        1   $memrd
+        1   $mux
+        1 submodules
+        1   address_decoder
+
+=== harvard_demo ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       93 wires
+     1267 wire bits
+       29 public wires
+      326 public wire bits
+       10 ports
+      134 port bits
+        1 memories
+     1024 memory bits
+      111 cells
+        4   $add
+        5   $eq
+       11   $logic_and
+        6   $logic_not
+        5   $logic_or
+        3   $memrd
+       34   $memwr_v2
+       32   $mux
+        2   $not
+        4   $reduce_and
+        1   $reduce_bool
+        4   $sdffe
+        3 submodules
+        1   $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001
+        1   data_memory
+        1   memory_controller
+
+=== memory_controller ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       12 wires
+       12 wire bits
+        6 public wires
+        6 public wire bits
+        6 ports
+        6 port bits
+        9 cells
+        1   $logic_or
+        8   $mux
+
+=== address_decoder ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       39 wire bits
+        5 public wires
+       39 public wire bits
+        5 ports
+       39 port bits
+        3 cells
+        1   $logic_and
+        2   $logic_not
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+      175 harvard_demo
+       25 $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001
+        3   address_decoder
+       24 data_memory
+        3   address_decoder
+        9 memory_controller
+
+        +----------Count including submodules.
+        | 
+      138 wires
+     1668 wire bits
+       62 public wires
+      588 public wire bits
+       37 ports
+      384 port bits
+        3 memories
+     2048 memory bits
+        - processes
+      175 cells
+        4   $add
+        5   $eq
+       15   $logic_and
+       10   $logic_not
+        6   $logic_or
+       39   $meminit_v2
+        5   $memrd
+       35   $memwr_v2
+       45   $mux
+        2   $not
+        4   $reduce_and
+        1   $reduce_bool
+        4   $sdffe
+        3 submodules
+        1   $paramod\instruction_memory\DEMO_PROGRAM=s32'00000000000000000000000000000001
+        1   data_memory
+        1   memory_controller
+
+End of script. Logfile hash: 635830ef83, time: 0.04s, user: 0.05s, system: 0.00s, MEM: 20.61 MB peak
+Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+Time spent: 24% 10x read_verilog (0 sec), 18% 1x proc_mux (0 sec), ...
