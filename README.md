@@ -1,5 +1,8 @@
 # Instruction and Data Memory Organization
 
+
+Video Link : https://drive.google.com/drive/folders/1isoOIEW29yKrh1GR4PTo7yXNPPL1AZCH?usp=sharing
+
 Simplified Harvard RTL with independent instruction/data paths, an executable
 teaching controller, and a single-port shared-memory baseline. Verified on
 2026-11-11 with Icarus Verilog 13.0 and Yosys 0.70+post.
