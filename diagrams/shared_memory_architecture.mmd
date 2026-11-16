@@ -1,0 +1,12 @@
+flowchart LR
+  I[Instruction request / address] --> ARB[Arbiter: instruction first, pending data next]
+  D[Data request / address / write payload] --> P[Pending request registers]
+  D --> ARB
+  P --> ARB
+  ARB --> MUX[Address mux]
+  MUX --> MEM[One 32 x 32 array: ONE read port]
+  D -->|write payload| MEM
+  P -->|retained payload| MEM
+  MEM --> RESP[Registered instruction / data responses]
+  ARB --> RESP
+  RESP --> DONE[Done pulses: requester turnaround cycle]

@@ -1,0 +1,11 @@
+flowchart LR
+  PC[Controller PC] --> IM[Instruction ROM: demo program]
+  IM --> DEC[ADDI / LW / SW / EBREAK decoder]
+  DEC --> RF[Register file: x0 held at zero]
+  RF --> EA[Base + sign-extended immediate]
+  EA --> DM[Independent data RAM]
+  DEC --> CTRL[Read/write control]
+  CTRL --> DM
+  RF -->|store data| DM
+  DM -->|load data| RF
+  DEC -->|next PC / halt / fault| PC

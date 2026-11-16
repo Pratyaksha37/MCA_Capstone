@@ -1,0 +1,10 @@
+flowchart LR
+  CLK[Clock and synchronous reset] --> PC[Program counter: +4]
+  PC -->|instruction byte address| IM[Instruction ROM: 16 x 32]
+  IM -->|instruction / valid| OUT[Instruction output]
+  A[Independent data byte address] --> DM[Data RAM: 16 x 32]
+  REQ[Read / write requests] --> CTRL[Read/write control: write priority]
+  DM -->|address valid| CTRL
+  CTRL -->|read / write enable| DM
+  W[Write data] --> DM
+  DM -->|read data| R[Data output]
