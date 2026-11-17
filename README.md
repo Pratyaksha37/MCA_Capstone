@@ -1,11 +1,10 @@
 # Instruction and Data Memory Organization
 
-
-Video Link : https://drive.google.com/drive/folders/1isoOIEW29yKrh1GR4PTo7yXNPPL1AZCH?usp=sharing
-
 Simplified Harvard RTL with independent instruction/data paths, an executable
 teaching controller, and a single-port shared-memory baseline. Verified on
 2026-11-11 with Icarus Verilog 13.0 and Yosys 0.70+post.
+
+Video Link : https://drive.google.com/drive/folders/1isoOIEW29yKrh1GR4PTo7yXNPPL1AZCH?usp=sharing
 
 | Verified result | Value |
 |---|---:|
@@ -20,6 +19,15 @@ teaching controller, and a single-port shared-memory baseline. Verified on
 
 The measured 2x ratio applies to the simultaneous two-operation workload. It is
 not a general CPU speedup or a frequency measurement.
+
+## Project report
+
+The IEEE-format report includes the abstract, literature review, proposed
+solution, results and discussion, individual contributions, conclusion, and
+references, with block diagrams and simulation evidence.
+
+- [Project report (PDF)](reports/Harvard_Memory_IEEE_Report.pdf)
+- [Editable LaTeX source](reports/Harvard_Memory_IEEE_Report.tex)
 
 ## Run
 
@@ -57,7 +65,7 @@ also checks actual signal values and service timing through `verify_waveforms.py
 | Simulation and waveform evidence | `results/simulation/`, `results/waveforms/` |
 | Measured comparison | `results/performance/performance_summary.txt` |
 | Synthesis resources | `results/synthesis/comparison_table.md`, `summary.txt`, and six logs |
-| Review findings and scope | [Verification review](docs/verification_review.md) |
+| IEEE-format project report | [PDF](reports/Harvard_Memory_IEEE_Report.pdf); [LaTeX source](reports/Harvard_Memory_IEEE_Report.tex)|
 
 The baseline Harvard top continuously fetches a 16-word instruction ROM. Its
 independent 16-word RAM accepts byte addresses `0x00..0x3C`, aligned to four bytes.
@@ -97,9 +105,18 @@ PC=24, retired=7, halted=1, fault=0. Each load/store overlaps the independent
 fetch path. The shared comparison uses a separate simultaneous fetch/read
 workload; the seven-instruction demo is executed on Harvard only.
 
+## Group members and individual contributions
+
+| Group member | Student ID | Contribution |
+|---|---|---|
+| Shagun Singh | 2401010434 | Harvard memory RTL: program counter, instruction memory, instruction-fetch path, and top-level connections. |
+| Yogesh Mishra | 2401010518 | Data memory and control: data RAM, address decoding, read/write control, alignment checks, and invalid-access handling. |
+| Shiva Sharma | 2401010441 | Shared-memory implementation: single-port memory, arbitration, pending-request retention, and completion handshake. |
+| Pratyaksha Shastri | 2401010348 | Executable controller and verification: demo program, controller, testbenches, simulation, and waveform analysis. |
+| Saksham Miglani | 2401010401 | Documentation and analysis: architecture comparison, synthesis and performance analysis, block diagrams, project report, video script, and presentation. |
+
 See [architecture](docs/architecture.md), [timing](docs/microarchitecture.md),
-[tests](docs/testing.md), [performance and synthesis](docs/performance_and_synthesis.md),
-and [live demo](docs/live_demo.md).
+[tests](docs/testing.md), [performance and synthesis](docs/performance_and_synthesis.md).
 
 Memory power-up initialization is modeled with Verilog `initial` blocks. Generic
 synthesis succeeds, but ASIC initialization, FPGA block-RAM inference, physical
